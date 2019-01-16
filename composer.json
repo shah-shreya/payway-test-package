@@ -1,0 +1,26 @@
+{
+    "name": "payway/payway",
+    "description": "This will allow you to integrate payway in your laravel based shopping cart application.",
+    "type": "library",
+    "license": "MIT",
+    "authors":[
+        {
+            "name": "payway",
+            "email": "author@test.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "payway\\payway\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "payway\\payway\\PaywayServiceProvider"
+            ]
+        }
+    }
+}
