@@ -177,7 +177,7 @@ Need to set below url as your callback url:
     2. Go to Settings -> Setup SMTP
     3. Change Continue Purchase URL and Push Back Notification URL according to your application.
     
-**For detail description and snaps refer to [Payway Document] (/paywayDocument.docx)**  
+**For detail description and snaps refer to [Payway Document] (https://github.com/shah-shreya/payway-test-package/blob/master/PaywayDocument.docx)**  
 
 
 
