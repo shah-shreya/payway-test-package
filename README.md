@@ -25,7 +25,7 @@ After creating your application successfully on the hosting for Laravel project,
      
 **4. Payway Form View:-**
 
-For view Go to **laravelproject\resources\views\vendor\payway\ **, you will get **paywithpayway.blade.php**
+For view Go to **laravelproject\resources\views\vendor\payway\**, you will get **paywithpayway.blade.php**
 
 Edit the file according to your requirement, just take care about the must have things for payway to work.
 
