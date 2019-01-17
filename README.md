@@ -98,7 +98,7 @@ Edit the file according to your requirement, just take care about the must have 
      
 **Command:- php artisan make:controller PaywayController**
      
--For controller, Go to  **laravelproject\app\Http\Controllers\payway\**, here you will get **PaywayController.php.**
+-For controller, Go to **laravelproject\app\Http\Controllers\payway\** , here you will get **PaywayController.php.**
 
 -Perform your logic related to getting payment information and status.    
      
