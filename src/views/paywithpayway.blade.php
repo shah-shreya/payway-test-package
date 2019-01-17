@@ -24,7 +24,7 @@
             <div style="width: 200px;margin: 0 auto;">
                     <h2>TOTAL: {{$payment['amount']}}</h2>
                     <!-- Checkout button for payment -->
-                    <input type="button" id="checkout_button" value="Checkout Now">
+                    <input type="button" id="payway_checkout_button" value="Checkout with Payway">
             </div>
     </div>
     <!--Checkout Container End -->
@@ -42,7 +42,7 @@
     <!--Open Checkout popup on click of checkout button-->
     <script type="text/javascript">
         $(document).ready(function () {
-                $('#checkout_button').click(function () {
+                $('#payway_checkout_button').click(function () {
                         AbaPayway.checkout();
                 });
         });
