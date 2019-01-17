@@ -1,5 +1,5 @@
 
-###**  Laravel Payway (Payment Gateway) Installation steps:-**
+###**Laravel Payway (Payment Gateway) Installation steps:-**
 
 **1.** For Laravel payway integration, first install the payway package in your application  using the composer command. Once package get installed, vendor publish command is required to make the package work. Open your command prompt and paste the following command under project directory.
    
@@ -98,7 +98,7 @@ Edit the file according to your requirement, just take care about the must have 
      
 **Command:- php artisan make:controller PaywayController**
      
--For controller, Go to **laravelproject\app\Http\Controllers\payway\ **, here you will get **PaywayController.php.**
+-For controller, Go to **laravelproject\app\Http\Controllers\payway\**, here you will get **PaywayController.php.**
 
 -Perform your logic related to getting payment information and status.    
      
