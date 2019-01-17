@@ -57,7 +57,7 @@ Edit the file according to your requirement, just take care about the must have 
             <div style="width: 200px;margin: 0 auto;">
                     <h2>TOTAL: $2.00</h2>
                     <!-- Checkout button for payment -->
-                    <input type="button" id="payway_checkout_button" value="Checkout Now">
+                    <input type="button" id="payway_checkout_button" value="Checkout with Payway">
             </div>
     	</div>
     	<!--Checkout Container End -->
