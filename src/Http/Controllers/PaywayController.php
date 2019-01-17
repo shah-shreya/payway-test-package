@@ -10,51 +10,44 @@ class PaywayController extends Controller {
 
    public function payway(Request $request){
        
-    $transactionId = '000005135';
-    $amount = '4.00';
-    $firstName = 'Soem';
-    $lastName = 'Chhengleap';
-    $phone = '077459799';
-    $email = 'soem.chhengleap@ababank.com';   
-
-    $hashedTransactionId = $this->getHash($transactionId, $amount);  
+    // Perform your logic to get payment related data like amount and user information from your system and pass it to payment array accordingly.
+    $payment = array();
+    // tran_id (string)(required) – unique tran_id < 20 characters 
+    $payment['transactionId'] = '000000525'; 
+    // amount (decimal)(required) – total amount of items (valid format: 0.00) 
+    $payment['amount'] = '2.00';  
+    // firstname – (optional) 
+    $payment['firstName'] = 'ABC';    
+   // lastname – (optional) 
+    $payment['lastName'] = 'XYZ';  
+    // phone – (optional)
+    $payment['phone'] = '1234567890'; 
+    // email – (optional) 
+    $payment['email'] = 'your.email@test.com';   
+    // hash (string) (required) – This will be auto-generated. (encrypt "merchant_id+tran_id+amount key" with hash_hmac sha512 after that convert the output using Base64. merchant_id and key - ABA Bank will be provided when client sign contract.)
+    $payment['hashedTransactionId'] = $this->getHash($payment['transactionId'], $payment['amount']);   
     
-    $payment = array(
-                        'transactionId' => $transactionId,
-                        'amount' => $amount,
-                        'firstName' => $firstName,
-                        'lastName' => $lastName,
-                        'phone' => $phone,
-                        'email' => $email,
-                        'hashedTransactionId' => $hashedTransactionId
-    );   
     return view('payway::paywithpayway',compact('payment'));
-    //return view('payway',compact('payment'));
- 
+    
    }
  
    public function getPaywayStatus(Request $request){        
       
        $payway_response = '{"tran_id":"TRAN_ID_TEST123","status":0}';
-       
+       //$payway_response = $request->response;
+	   
        if(isset($payway_response)){
            $payway_response_array = json_decode($payway_response, true);
-            if(isset($payway_response_array['status'])){
-                if($payway_response_array['status'] == 0){
-                    return 'Pyament has been done and your payment id is : '.$payway_response_array['tran_id'];
-                }elseif($payway_response_array['status'] == 1){
-                    return 'Payment has failed. Wrong hash has generated.';
-                }elseif($payway_response_array['status'] == 2){
-                    return 'Payment has failed. Validation code required.';
-                }elseif($payway_response_array['status'] == 7){
-                    return 'Payment has failed. Validation code required.';
-                }elseif($payway_response_array['status'] == 11){
-                    return 'Payment has failed. Other - server side error.';
-                }
-            }else{
+            if(isset($payway_response_array['status']) && $payway_response_array['status'] == 0){
+                    // Apply  your Logic to perform after successful payment over here... 
+		    $message = 'Pyament has been done and your payment id is : '.$payway_response_array['tran_id'];
+		    //mail("useremail@test.com","Your Payment Using Payway","$message");
+            }
+	    else{
                  return 'Payment has failed.';
             }
-       }else{
+       }
+	else{
             return 'Payment has failed.';
        }
  
