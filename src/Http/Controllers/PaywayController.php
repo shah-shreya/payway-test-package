@@ -13,7 +13,7 @@ class PaywayController extends Controller {
     // Perform your logic to get payment related data like amount and user information from your system and pass it to payment array accordingly.
     $payment = array();
     // tran_id (string)(required) – unique tran_id < 20 characters , you can pass it according to your requirement.
-    $payment['transactionId'] = substr(md5(microtime()*rand(0,9999)),0,20); 
+    $payment['transactionId'] = '0005125'; 
     // amount (decimal)(required) – total amount of items (valid format: 0.00) 
     $payment['amount'] = '5.00';  
     // firstname – (optional) 
