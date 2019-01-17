@@ -25,7 +25,7 @@ After creating your application successfully on the hosting for Laravel project,
      
 **4. Payway Form View:-**
 
-For view Go to  **laravelproject\resources\views\vendor\payway\**, you will get **paywithpayway.blade.php**
+For view Go to  laravelproject\resources\views\vendor\payway\, you will get **paywithpayway.blade.php**
 
 Edit the file according to your requirement, just take care about the must have things for payway to work.
 
@@ -100,7 +100,7 @@ Edit the file according to your requirement, just take care about the must have 
      
 **Command:- php artisan make:controller PaywayController**
      
--For controller, Go to **laravelproject\app\Http\Controllers\payway\** , here you will get **PaywayController.php.**
+-For controller, Go to laravelproject\app\Http\Controllers\payway\ , here you will get **PaywayController.php.**
 
 -Perform your logic related to getting payment information and status.    
      
@@ -131,7 +131,7 @@ Edit the file according to your requirement, just take care about the must have 
           // hash (string) (required) – This will be auto-generated. (encrypt "merchant_id+tran_id+amount+items(optional), key" with hash_hmac sha512 after that convert the output using Base64. merchant_id and key - ABA Bank will be provided when client sign contract.)
           $payment['hashedTransactionId'] = $this->getHash($payment['transactionId'], $payment['amount']);  
 
-          return view('payway',compact('payment'));
+          return view('paywithpayway',compact('payment'));
  
       }
  
