@@ -175,7 +175,8 @@ Need to set below url as your callback url:
     
     1. Go to URL :- https://payway-dev.ababank.com/transaction-management/
     2. Go to Settings -> Setup SMTP
-    3. Change Continue Purchase URL and Push Back Notification URL according to your application.
+    3. Set Continue Purchase URL to : your-site-url/shop_page
+    4. set Push Back Notification URL to : your-site-url/payway_status
     
 **For detail description and snaps refer to [Payway Document](https://github.com/shah-shreya/payway-test-package/blob/master/PaywayDocument.docx)**  
 
