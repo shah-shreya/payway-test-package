@@ -98,8 +98,6 @@ Edit the file according to your requirement, just take care about the must have 
         
 **5. Payway Payment Controller:-**
      
-**Command:- php artisan make:controller PaywayController**
-     
 -For controller, Go to laravelproject\app\Http\Controllers\payway\ , here you will get **PaywayController.php.**
 
 -Perform your logic related to getting payment information and status.    
@@ -128,7 +126,7 @@ Edit the file according to your requirement, just take care about the must have 
           $payment['phone'] = '1234567890'; 
           // email – (optional) 
           $payment['email'] = 'your.email@test.com';   
-          // hash (string) (required) – This will be auto-generated. (encrypt "merchant_id+tran_id+amount+items(optional), key" with hash_hmac sha512 after that convert the output using Base64. merchant_id and key - ABA Bank will be provided when client sign contract.)
+          // hash (string) (required) – This will be auto-generated. (encrypt "merchant_id+tran_id+amount, key" with hash_hmac sha512 after that convert the output using Base64. merchant_id and key - ABA Bank will be provided when client sign contract.)
           $payment['hashedTransactionId'] = $this->getHash($payment['transactionId'], $payment['amount']);  
 
           return view('paywithpayway',compact('payment'));
@@ -171,7 +169,7 @@ Need to set below url as your callback url:
     
 **7. Continue Purchase URL and Push Back Notification URL Settings:-**
 
-    -For settings of Continue Purchase URL and Push Back Notification URL, refer following  steps and change url according to your application.
+    -Change Continue Purchase URL and Push Back Notification URL according to your application.
     
     1. Go to URL :- https://payway-dev.ababank.com/transaction-management/
     2. Go to Settings -> Setup SMTP
