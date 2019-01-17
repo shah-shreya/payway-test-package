@@ -104,7 +104,9 @@ Edit the file according to your requirement, just take care about the must have 
      
 --------------------------------------------------------------------------------------------
 
-      namespace App\Http\Controllers;
+      namespace App\Http\Controllers\payway;
+      
+      use App\Http\Controllers\Controller
  
       use Illuminate\Http\Request;
  
@@ -129,7 +131,7 @@ Edit the file according to your requirement, just take care about the must have 
           // hash (string) (required) – This will be auto-generated. (encrypt "merchant_id+tran_id+amount, key" with hash_hmac sha512 after that convert the output using Base64. merchant_id and key - ABA Bank will be provided when client sign contract.)
           $payment['hashedTransactionId'] = $this->getHash($payment['transactionId'], $payment['amount']);  
 
-          return view('paywithpayway',compact('payment'));
+          return view('payway::paywithpayway',compact('payment'));
  
       }
  
