@@ -1,5 +1,5 @@
 
-###**  Laravel Payway (Payment Gateway) Installation steps:- **
+###**  Laravel Payway (Payment Gateway) Installation steps:-**
 
 **1.** For Laravel payway integration, first install the payway package in your application  using the composer command. Once package get installed, vendor publish command is required to make the package work. Open your command prompt and paste the following command under project directory.
    
@@ -7,7 +7,7 @@
 
 **Vendor publish command :- php artisan vendor:publish**
 
-**2. Create Payway Account:- **
+**2. Create Payway Account:-**
      
 Create a Payway developer mode and create a sandbox account to get important credentials like  api_key, api_url and merchant_id for integration with your Laravel app.
 
@@ -17,13 +17,13 @@ Create a Payway developer mode and create a sandbox account to get important cre
 
 After creating your application successfully on the hosting for Laravel project, click on it and it will show you api_key and api_url and merchant_id. Copy these credentials and paste them in your .env file.
 
-**PAYWAY_API_KEY= **
+**PAYWAY_API_KEY=**
 
-**PAYWAY_API_URL= **
+**PAYWAY_API_URL=**
 
-**PAYWAY_MERCHANT_ID= **
+**PAYWAY_MERCHANT_ID=**
      
-**4. Payway Form View:- **
+**4. Payway Form View:-**
 
 For view Go to **laravelproject\resources\views\vendor\payway\ **, you will get **paywithpayway.blade.php**
 
@@ -94,7 +94,7 @@ Edit the file according to your requirement, just take care about the must have 
         <link rel="stylesheet" href="https://payway.ababank.com/checkout-popup.html?file=css"/>
         <script src="https://payway.ababank.com/checkout-popup.html?file=js"></script>
         
-**5. Payway Payment Controller:- **
+**5. Payway Payment Controller:-**
      
 **Command:- php artisan make:controller PaywayController**
      
