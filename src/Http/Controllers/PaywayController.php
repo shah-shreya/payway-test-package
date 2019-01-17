@@ -12,10 +12,10 @@ class PaywayController extends Controller {
        
     // Perform your logic to get payment related data like amount and user information from your system and pass it to payment array accordingly.
     $payment = array();
-    // tran_id (string)(required) – unique tran_id < 20 characters 
-    $payment['transactionId'] = '000000525'; 
+    // tran_id (string)(required) – unique tran_id < 20 characters , you can pass it according to your requirement.
+    $payment['transactionId'] = substr(md5(microtime()*rand(0,9999)),0,20); 
     // amount (decimal)(required) – total amount of items (valid format: 0.00) 
-    $payment['amount'] = '2.00';  
+    $payment['amount'] = '5.00';  
     // firstname – (optional) 
     $payment['firstName'] = 'ABC';    
    // lastname – (optional) 
@@ -32,9 +32,8 @@ class PaywayController extends Controller {
    }
  
    public function getPaywayStatus(Request $request){        
-      
-       $payway_response = '{"tran_id":"TRAN_ID_TEST123","status":0}';
-       //$payway_response = $request->response;
+      //payway will return json strin like - {"tran_id":"TRAN_ID_TEST123","status":0} to call back url.
+       $payway_response = $request->response;
 	   
        if(isset($payway_response)){
            $payway_response_array = json_decode($payway_response, true);
