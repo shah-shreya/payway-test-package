@@ -29,19 +29,18 @@ For view Go to  **laravelproject\resources\views\vendor\payway\**, you will get 
 
 Edit the file according to your requirement, just take care about the must have things for payway to work.
 
-
 -----------------------------------------------------------------------------------------------
 
       <html lang="en">
       <head>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-      </head>
-      <body>
-          <div id="aba_main_modal" class="aba-modal">		
-	      <div class="aba-modal-content">
+	<!--Jquery is required to be added -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	</head>
+	<body>
+    	<div id="aba_main_modal" class="aba-modal">		
+	<div class="aba-modal-content">
+    	<!-- Following is the form where the values are passed in hidden, which will be used for payment.-->
             <form method="POST" target="aba_webservice" action="{{ config('payway.api_url') }}" id="aba_merchant_request">
-                <!-- Following are fields value passed in hidden which will be used for paymnet.
-                hash, tran_id and amount are required fields, Change the fields according to your application -->
                 <input type="hidden" id="hash" name="hash" value="{{$payment['hashedTransactionId']}}">
                 <input type="hidden" id="tran_id" name="tran_id" value="{{$payment['transactionId']}}">
                 <input type="hidden" id="amount" name="amount" value="{{$payment['amount']}}">
@@ -50,37 +49,40 @@ Edit the file according to your requirement, just take care about the must have 
                 <input type="hidden" id="phone" name="phone" value="{{$payment['phone']}}">
                 <input type="hidden" id="email" name="email" value="{{$payment['email']}}">
             </form>
-          </div>
-          </div>
-          <div class="container" style="margin-top: 75px;margin: 0 auto;">
+    	<!--Form End-->        
+        </div>
+    	</div>
+    	<!--Add your code for the checkout Page Here-->
+    	<div class="container" style="margin-top: 75px;margin: 0 auto;">
             <div style="width: 200px;margin: 0 auto;">
-                    <!-- Apply your code here.. -->
                     <h2>TOTAL: $2.00</h2>
                     <!-- Checkout button for payment -->
                     <input type="button" id="checkout_button" value="Checkout Now">
-             </div>
-          </div>
-          <!-- Scripts for developement mode - Start-->
-             <link rel="stylesheet" href="https://payway-dev.ababank.com/checkout-popup.html?file=css"/>
-             <script src="https://payway-dev.ababank.com/checkout-popup.html?file=js"></script>
-          <!-- Scripts for developement mode - End-->
+            </div>
+    	</div>
+    	<!--Checkout Container End -->
+
+    	<!-- Scripts for developement mode - Start-->
+    	<link rel="stylesheet" href="https://payway-dev.ababank.com/checkout-popup.html?file=css"/>
+    	<script src="https://payway-dev.ababank.com/checkout-popup.html?file=js"></script>
+    	<!-- Scripts for developement mode - End-->
     
-          <!-- Scripts for Live mode - Start-->
-             <!--<link rel="stylesheet" href="https://payway.ababank.com/checkout-popup.html?file=css"/>
-		         <script src="https://payway.ababank.com/checkout-popup.html?file=js"></script> -->
-          <!-- Scripts for Live mode - End-->
+    	<!-- Scripts for Live/Production mode - Start-->
+    	<!--<link rel="stylesheet" href="https://payway.ababank.com/checkout-popup.html?file=css"/>
+		<script src="https://payway.ababank.com/checkout-popup.html?file=js"></script> -->
+    	<!-- Scripts for Live/Production mode - End-->
     
-       <script type="text/javascript">
-           $(document).ready(function () {
+    	<!--Open Checkout popup on click of checkout button-->
+    	<script type="text/javascript">
+        $(document).ready(function () {
                 $('#checkout_button').click(function () {
                         AbaPayway.checkout();
                 });
-           });
-       </script>   
-      </body>
-      </html>
-
-    --------------------------------------------------------------------------------------------------
+        });
+    	</script>   
+	</body>
+	</html>
+--------------------------------------------------------------------------------------------------
 
 **For live payment, Replace the following development script Urls with live Urls in payway.blade.php:-**
      
@@ -102,7 +104,7 @@ Edit the file according to your requirement, just take care about the must have 
 
 -Perform your logic related to getting payment information and status.    
      
-     --------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 
       namespace App\Http\Controllers;
  
@@ -154,9 +156,7 @@ Edit the file according to your requirement, just take care about the must have 
 	         return $hash;
          }
       }
-
-    
-    ---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
     
 **6. How to access payment page :-**
 
