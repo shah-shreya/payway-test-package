@@ -75,7 +75,7 @@ Edit the file according to your requirement, just take care about the must have 
     	<!--Open Checkout popup on click of checkout button-->
     	<script type="text/javascript">
         $(document).ready(function () {
-                $('#checkout_button').click(function () {
+                $('#payway_checkout_button').click(function () {
                         AbaPayway.checkout();
                 });
         });
