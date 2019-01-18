@@ -126,6 +126,26 @@ Edit the file according to your requirement, just take care about the must have 
          $payment['url'] = $this->getUrl();
     		return view('payway::paywithpayway',compact('payment'));
       }
+      
+      public function getPaywayStatus(Request $request){        
+      //payway will return json strin like - {"tran_id":"TRAN_ID_TEST123","status":0} to call back url.
+       $payway_response = $request->response;
+	   
+	       if(isset($payway_response)){
+		   $payway_response_array = json_decode($payway_response, true);
+		    if(isset($payway_response_array['status']) && $payway_response_array['status'] == 0){
+			    // Apply  your Logic to perform after successful payment over here... 
+			    $message = 'Pyament has been done and your payment id is : '.$payway_response_array['tran_id'];
+			    //mail("useremail@test.com","Your Payment Using Payway","$message");
+		    }
+		    else{
+			 return 'Payment has failed.';
+		    }
+	       }
+		else{
+		    return 'Payment has failed.';
+	       }
+      }
  
       public function getHash($transactionId, $amount,$items) {  
 		$data = config('payway.merchant_id') . $transactionId . $amount;
