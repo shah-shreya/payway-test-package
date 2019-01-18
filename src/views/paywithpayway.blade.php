@@ -29,15 +29,10 @@
     </div>
     <!--Checkout Container End -->
 
-    <!-- Scripts for developement mode - Start-->
-    <link rel="stylesheet" href="https://payway-dev.ababank.com/checkout-popup.html?file=css"/>
-    <script src="https://payway-dev.ababank.com/checkout-popup.html?file=js"></script>
-    <!-- Scripts for developement mode - End-->
-    
-    <!-- Scripts for Live/Production mode - Start-->
-    <!--<link rel="stylesheet" href="https://payway.ababank.com/checkout-popup.html?file=css"/>
-		<script src="https://payway.ababank.com/checkout-popup.html?file=js"></script> -->
-    <!-- Scripts for Live/Production mode - End-->
+    <!-- Scripts for adding Payway Js and Css - Start-->
+    <link rel="stylesheet" href="{{$payment['url']}}.ababank.com/checkout-popup.html?file=css"/>
+    <script src="{{$payment['url']}}.ababank.com/checkout-popup.html?file=js"></script>
+    <!-- Scripts for adding Payway Js and Css - End-->
     
     <!--Open Checkout popup on click of checkout button-->
     <script type="text/javascript">
