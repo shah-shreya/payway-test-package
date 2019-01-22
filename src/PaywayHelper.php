@@ -33,7 +33,7 @@ class PaywayHelper
         return $urlArray[0];
         }
         
-        throw new \Exception("PAYWAY_API_URL property must exist in .env file and it should not be null.");
+        throw new \Exception("PAYWAY_API_URL must exist in .env file and it should not be null.");
     }
 
     /**
@@ -45,7 +45,7 @@ class PaywayHelper
         return config('payway.api_url');
         }
         
-        throw new \Exception("PAYWAY_API_URL property must exist in .env file and it should not be null.");
+        throw new \Exception("PAYWAY_API_URL must exist in .env file and it should not be null.");
     }
 
     /**
@@ -57,7 +57,7 @@ class PaywayHelper
         return config('payway.merchant_id');
         }
         
-        throw new \Exception("PAYWAY_MERCHANT_ID property must exist in .env file and it should not be null.");
+        throw new \Exception("PAYWAY_MERCHANT_ID must exist in .env file and it should not be null.");
     }
 
     /**
@@ -69,7 +69,7 @@ class PaywayHelper
         return config('payway.api_key');
         }
         
-        throw new \Exception("PAYWAY_API_KEY property must exist in .env file and it should not be null.");
+        throw new \Exception("PAYWAY_API_KEY must exist in .env file and it should not be null.");
     }
 
     /**
