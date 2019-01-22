@@ -11,7 +11,7 @@
      
 Create a Payway developer mode and create a sandbox account to get important credentials like  api_key, api_url and merchant_id for integration with your Laravel app.
 
-**URL for reference :- https://payway-dev.ababank.com/**
+**URL for reference :- https://payway-staging.ababank.com/**
 
 **3. Provide following details into .env file:-** 
 
@@ -236,7 +236,7 @@ Need to set below url as your callback url:
 
     -Change Continue Purchase URL and Push Back Notification URL according to your application.
     
-    1. Go to URL :- https://payway-dev.ababank.com/transaction-management/
+    1. Go to URL :- https://payway-staging.ababank.com/transaction-management/
     2. Go to Settings -> Setup SMTP
     3. Set Continue Purchase URL to : your-site-url/shop_page
     4. Set Push Back Notification URL to : your-site-url/payway_status
