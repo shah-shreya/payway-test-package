@@ -77,7 +77,7 @@ class PaywayHelper
      * @return string
      */
     public function getUniqueTranId(){
-
+        $unique_id = str_replace(".","",microtime(true)).rand(000,999);
+        return $unique_id;
     }
-   
 }
