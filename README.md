@@ -31,70 +31,56 @@ Edit the file according to your requirement, just take care about the must have 
 
 -----------------------------------------------------------------------------------------------
 
-      <html lang="en">
-      <head>
-	<!--Jquery is required to be added -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+ 	<html lang="en">
+	<head>
+		<!--Jquery is required to be added -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	</head>
 	<body>
-    	<div id="aba_main_modal" class="aba-modal">		
-	<div class="aba-modal-content">
-    	<!-- Following is the form where the values are passed in hidden, which will be used for payment.-->
-            <form method="POST" target="aba_webservice" action="{{ config('payway.api_url') }}" id="aba_merchant_request">
-                <input type="hidden" id="hash" name="hash" value="{{$payment['hashedTransactionId']}}">
-                <input type="hidden" id="tran_id" name="tran_id" value="{{$payment['transactionId']}}">
-                <input type="hidden" id="amount" name="amount" value="{{$payment['amount']}}">
-                <input type="hidden" id="firstname" name="firstname" value="{{$payment['firstName']}}">
-                <input type="hidden" id="lastname" name="lastname" value="{{$payment['lastName']}}">
-                <input type="hidden" id="phone" name="phone" value="{{$payment['phone']}}">
-                <input type="hidden" id="email" name="email" value="{{$payment['email']}}">
-            </form>
-    	<!--Form End-->        
-        </div>
-    	</div>
-    	<!--Add your code for the checkout Page Here-->
-    	<div class="container" style="margin-top: 75px;margin: 0 auto;">
-            <div style="width: 200px;margin: 0 auto;">
-                    <h2>TOTAL: $2.00</h2>
-                    <!-- Checkout button for payment -->
-                    <input type="button" id="payway_checkout_button" value="Checkout with Payway">
-            </div>
-    	</div>
-    	<!--Checkout Container End -->
+    		<div id="aba_main_modal" class="aba-modal">		
+		<div class="aba-modal-content">
+    		<!-- Following is the form where the values are passed in hidden, which will be used for payment.-->
+            	<form method="POST" target="aba_webservice" action="{{ config('payway.api_url') }}" id="aba_merchant_request">
+                	<input type="hidden" id="hash" name="hash" value="{{$payment['hashedTransactionId']}}">
+                	<input type="hidden" id="tran_id" name="tran_id" value="{{$payment['transactionId']}}">
+                	<input type="hidden" id="amount" name="amount" value="{{$payment['amount']}}">
+                	<input type="hidden" id="firstname" name="firstname" value="{{$payment['firstName']}}">
+                	<input type="hidden" id="lastname" name="lastname" value="{{$payment['lastName']}}">
+                	<input type="hidden" id="phone" name="phone" value="{{$payment['phone']}}">
+                	<input type="hidden" id="email" name="email" value="{{$payment['email']}}">
+                	@if(isset($payment['items']))
+                    	<input type="hidden" id="items" name="items" value="{{$payment['items']}}">
+                	@endif    
+            	</form>
+    		<!--Form End-->        
+        	</div>
+    		</div>
+    		<!--Add your code for the checkout Page Here-->
+    			<div class="container" style="margin-top: 75px;margin: 0 auto;">
+           		<div style="width: 200px;margin: 0 auto;">
+                    	<h2>TOTAL: {{$payment['amount']}}</h2>
+                    		<!-- Checkout button for payment -->
+                    		<input type="button" id="payway_checkout_button" value="Checkout with Payway">
+            		</div>
+    		</div>
+    		<!--Checkout Container End -->
 
-    	<!-- Scripts for developement mode - Start-->
-    	<link rel="stylesheet" href="https://payway-dev.ababank.com/checkout-popup.html?file=css"/>
-    	<script src="https://payway-dev.ababank.com/checkout-popup.html?file=js"></script>
-    	<!-- Scripts for developement mode - End-->
+    		<!-- Scripts for adding Payway Js and Css - Start-->
+    		<link rel="stylesheet" href="{{$payment['url']}}/checkout-popup.html?file=css"/>
+    		<script src="{{$payment['url']}}/checkout-popup.html?file=js"></script>
+    		<!-- Scripts for adding Payway Js and Css - End-->
     
-    	<!-- Scripts for Live/Production mode - Start-->
-    	<!--<link rel="stylesheet" href="https://payway.ababank.com/checkout-popup.html?file=css"/>
-		<script src="https://payway.ababank.com/checkout-popup.html?file=js"></script> -->
-    	<!-- Scripts for Live/Production mode - End-->
-    
-    	<!--Open Checkout popup on click of checkout button-->
-    	<script type="text/javascript">
-		$(document).ready(function () {
-			$('#payway_checkout_button').click(function () {
-				AbaPayway.checkout();
-			});
-		});
-    	</script>   
+    		<!--Open Checkout popup on click of checkout button-->
+    		<script type="text/javascript">
+        	    $(document).ready(function () {
+                	$('#payway_checkout_button').click(function () {
+                        	AbaPayway.checkout();
+                	});
+        	    });
+    		</script>   
 	</body>
 	</html>
 --------------------------------------------------------------------------------------------------
-
-**For live payment, Replace the following development script Urls with live Urls in payway.blade.php:-**
-     
-**Development script Urls:-**
-
-        <link rel="stylesheet" href="https://payway-dev.ababank.com/checkout-popup.html?file=css"/>
-        <script src="https://payway-dev.ababank.com/checkout-popup.html?file=js"></script>
-
-**Live script Urls:-**
-
-        <link rel="stylesheet" href="https://payway.ababank.com/checkout-popup.html?file=css"/>
-        <script src="https://payway.ababank.com/checkout-popup.html?file=js"></script>
         
 **5. Payway Payment Controller:-**
      
@@ -128,33 +114,53 @@ Edit the file according to your requirement, just take care about the must have 
           $payment['phone'] = '1234567890'; 
           // email – (optional) 
           $payment['email'] = 'your.email@test.com';   
-          // hash (string) (required) – This will be auto-generated. (encrypt "merchant_id+tran_id+amount, key" with hash_hmac sha512 after that convert the output using Base64. merchant_id and key - ABA Bank will be provided when client sign contract.)
-          $payment['hashedTransactionId'] = $this->getHash($payment['transactionId'], $payment['amount']);  
-
-          return view('payway::paywithpayway',compact('payment'));
- 
+         // items – (optional)
+    	 $items = array();
+    	 $items[0]['name'] = 'Item1';
+     	 $items[0]['quantity'] = 2;
+    	 $items[0]['price'] = 10;
+         $payment['items'] =  base64_encode(json_encode($items));
+    	 // hash (string) (required) – This will be auto-generated. (encrypt "merchant_id+tran_id+amount+items(optional) key" with 	             hash_hmac sha512 after that convert the output using Base64. merchant_id and key - ABA Bank will be provided when client sign contract.)
+          $payment['hashedTransactionId'] = $this->getHash($payment['transactionId'], $payment['amount'],$items);   
+         // it will get url for developement/production server based on api url specified in .env file for payway
+         $payment['url'] = $this->getUrl();
+    		return view('payway::paywithpayway',compact('payment'));
+      }
+      
+      public function getPaywayStatus(Request $request){        
+      //payway will return json strin like - {"tran_id":"TRAN_ID_TEST123","status":0} to call back url.
+       $payway_response = $request->response;
+	   
+	       if(isset($payway_response)){
+		   $payway_response_array = json_decode($payway_response, true);
+		    if(isset($payway_response_array['status']) && $payway_response_array['status'] == 0){
+			    // Apply  your Logic to perform after successful payment over here... 
+			    $message = 'Pyament has been done and your payment id is : '.$payway_response_array['tran_id'];
+			    //mail("useremail@test.com","Your Payment Using Payway","$message");
+		    }
+		    else{
+			 return 'Payment has failed.';
+		    }
+	       }
+		else{
+		    return 'Payment has failed.';
+	       }
       }
  
-         public function getPaywayStatus(Request $request){        
-      
-             $payway_response = $request->response;
-             if(isset($payway_response)){
-                 $payway_response_array = json_decode($payway_response, true);
-                  if(isset($payway_response_array['status']) && $payway_response_array['status'] == 0){
-                    // Apply  your code after successful payment here... 
-                    return 'Pyament has been done and your payment id is : '.$payway_response_array['tran_id'];
-                  }else{
-                    return 'Payment has failed.';
-                  }
-             }else{
-               return 'Payment has failed.';
-             }
-         }
+      public function getHash($transactionId, $amount,$items) {  
+		$data = config('payway.merchant_id') . $transactionId . $amount;
+		if (count($items)) {
+		    $items = base64_encode(json_encode($items));
+		    $data .= $items;
+		}
+		$hash = base64_encode(hash_hmac('sha512', $data, config('payway.api_key'), true));
+		return $hash;
+    	}
    
-         public function getHash($transactionId, $amount) {      
-             $hash = base64_encode(hash_hmac('sha512', config('payway.merchant_id') . $transactionId . $amount, config('payway.api_key'), true));
-	         return $hash;
-         }
+        public function getUrl() {   
+        	$urlArray = explode('/api',config('payway.api_url'));
+        	return $urlArray[0];
+    	}
       }
 ---------------------------------------------------------------------------------
     

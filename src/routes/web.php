@@ -1,6 +1,5 @@
 <?php
-
-Route::group(['namespace' => 'App\Http\controllers\payway'], function(){
-    Route::get('payway_status','PaywayController@getPaywayStatus');
+Route::group(['namespace' => 'App\Http\Controllers\payway'], function(){
+    Route::match(['get', 'post'],'payway_status','PaywayController@getPaywayStatus');
     Route::get('paywithpayway','PaywayController@payway');
 });
