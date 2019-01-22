@@ -81,11 +81,12 @@ class PaywayController extends Controller {
 		    //mail("useremail@test.com","Your Payment Using Payway","$message");
             }
 	    else{
-                 return 'Payment has failed.';
+                 // Apply  your Logic to perform for failed Transaction over here... 
+                 $message = 'Payment has failed.';
             }
        }
 	else{
-            return 'Payment has failed.';
+             $message = 'Not able to get response from Payway.';
        }
    }
     
