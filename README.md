@@ -15,7 +15,7 @@ Create a Payway developer mode and create a sandbox account to get important cre
 
 **3. Provide following details into .env file:-** 
 
-After creating your application successfully on the hosting for Laravel project, click on it and it will show you api_key and api_url and merchant_id. Copy these credentials and paste them in your .env file.
+After creating your payway account, you will get api_key and api_url and merchant_id. Copy these credentials and paste them in your .env file.
 
 **PAYWAY_API_KEY=**
 
