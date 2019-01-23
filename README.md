@@ -198,41 +198,30 @@ After creating your application successfully on the hosting for Laravel project,
         }
 
         public function getPaywayStatus(Request $request){        
-        //payway will return json strin like - {"tran_id":"TRAN_ID_TEST123","status":0} to call back url.
-        $payway_response = $request->response;
+      	//payway will return json string like - {"tran_id":"TRAN_ID_TEST123","status":0} to call back url.
+       	$payway_response = $request->response;
 	   
-            if(isset($payway_response)){
-                $payway_response_array = json_decode($payway_response, true);
-                 if(isset($payway_response_array['status']) && $payway_response_array['status'] == 0){
-                    // Apply  your Logic to perform after successful payment over here... 
-		           $message = 'Pyament has been done and your payment id is : '.$payway_response_array['tran_id'];
-		           //mail("useremail@test.com","Your Payment Using Payway","$message");
-                 }
-                 else{
-                      // Apply  your Logic to perform for failed Transaction over here... 
-                      $message = 'Payment has failed.';
-                 }
-            }
-            else{
-                  $message = 'Not able to get response from Payway.';
-            }
-        }
-    
+		if(isset($payway_response)){
+		   $payway_response_array = json_decode($payway_response, true);
+			if(isset($payway_response_array['status']) && $payway_response_array['status'] == 0){
+			// Apply  your Logic to perform after successful payment over here... 
+			    $message = 'Pyament has been done and your Transaction ID is : '.$payway_response_array['tran_id'];
+			    //mail("useremail@test.com","Your Payment Using Payway","$message");
+			}
+			else{
+				// Apply  your Logic to perform for failed Transaction over here... 
+				 $message = 'Payment has failed.';
+			}	
+		}
+		else{
+		    $message = 'It is not for browser please! It is to be set as Push Back Notification URL in your Payway account to 				get the response from Payway.';
+		    die($message);
+	       }
+   	}
      }
 ---------------------------------------------------------------------------------
     
-**6. How to access payment page :-**
-
-You can access your checkout page from this url:
-
-**your-site-url/paywithpayway**
-
-Need to set below url as your callback url:
-
-**your-site-url/payway_status**
-
-    
-**7. Continue Purchase URL and Push Back Notification URL Settings:-**
+**6. Continue Purchase URL and Push Back Notification URL Settings:-**
 
     -Change Continue Purchase URL and Push Back Notification URL according to your application.
     
@@ -240,6 +229,12 @@ Need to set below url as your callback url:
     2. Go to Settings -> Setup SMTP
     3. Set Continue Purchase URL to : your-site-url/shop_page
     4. Set Push Back Notification URL to : your-site-url/payway_status
+    
+**7. How to access payment page :-**
+
+You can access your checkout page from this url:
+
+**your-site-url/paywithpayway**    
     
 **For detail description and snaps refer to [Payway Document](https://github.com/shah-shreya/payway-test-package/blob/master/PaywayDocument.docx)**  
 
