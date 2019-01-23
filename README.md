@@ -41,14 +41,6 @@ After creating your payway account, you will get api_key and api_url and merchan
 * Checkout button is required to be added for checkout proccess. By clicking on it , popup for payway checkout will be shown to process payment.
 * Scripts for adding Payway Js and Css are required to be added.
 * Js for opening checkout popup on click of checkout button is required to be added.
-* Items array is optional parameter which is passed in hidden field. In Items array, items must be passed as below :- 
-
-     $items[0]['name'] = 'Item1';    
-     
-     $items[0]['quantity'] = 2;  
-     
-     $items[0]['price'] = 10;
-     
 * Payway accept amount in USD, so if you are using any other currency then amount must be converted in USD before passing it in payway.
 
 -----------------------------------------------------------------------------------------------
