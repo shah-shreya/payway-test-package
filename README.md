@@ -217,8 +217,8 @@ After creating your application successfully on the hosting for Laravel project,
 		    $message = 'It is not for browser please! It is to be set as Push Back Notification URL in your Payway account to 				get the response from Payway.';
 		    die($message);
 	       }
-   	}
-     }
+   	   }
+ 	}
 ---------------------------------------------------------------------------------
     
 **6. Continue Purchase URL and Push Back Notification URL Settings:-**
