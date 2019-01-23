@@ -86,7 +86,8 @@ class PaywayController extends Controller {
             }
        }
 	else{
-             $message = 'Not able to get response from Payway.';
+             $message = 'It is not for browser please! It is to be set as Push Back Notification URL in your Payway account to get the response from Payway.';
+             die($message);
        }
    }
     
