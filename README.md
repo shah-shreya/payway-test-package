@@ -231,7 +231,7 @@ After creating your payway account, you will get api_key and api_url and merchan
 
 You can access your checkout page from this url:
 
-**your-site-url/paywithpayway**    
+**your-site-url/paywithpayway** (ex: www.yoursite.com/paywithpayway)   
     
 **For detail description and snaps refer to [Payway Document](https://github.com/shah-shreya/payway-test-package/blob/master/PaywayDocument.docx)**  
 
