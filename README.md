@@ -1,4 +1,5 @@
-**Prerequisite:** Laravel setup is required to use this plugin.
+### **Prerequisite:-** 
+Laravel setup is required to use this plugin.
 
 ### **Laravel Payway (Payment Gateway) Installation steps:-**
 
