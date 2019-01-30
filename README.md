@@ -1,3 +1,4 @@
+**Prerequisite:** Laravel setup is required to use this plugin.
 
 ### **Laravel Payway (Payment Gateway) Installation steps:-**
 
@@ -6,6 +7,8 @@
 **Composer Command :-  composer require payway/payway** 
 
 **Vendor publish command :- php artisan vendor:publish**
+
+After running vendor publish command you will find the list of providers, write the number of Payway service provider from the list and press Enter to finish vendor publish process.
 
 **2. Create Payway Account:-**
      
@@ -217,10 +220,11 @@ After creating your payway account, you will get api_key and api_url and merchan
 
     -Change Continue Purchase URL and Push Back Notification URL according to your application.
     
-    1. Go to URL :- https://payway-staging.ababank.com/transaction-management/
-    2. Go to Settings -> Setup SMTP
-    3. Set Continue Purchase URL to : your-site-url/shop_page
-    4. Set Push Back Notification URL to : your-site-url/payway_status
+    1. Login to Payway Portal :- https://payway-staging.ababank.com/login/
+    2. Go to URL :- https://payway-staging.ababank.com/transaction-management/
+    3. Go to Settings -> Setup SMTP
+    4. Set Continue Purchase URL to : your-site-url/shop_page (ex: www.yoursite.com/shop)
+    5. Set Push Back Notification URL to : your-site-url/payway_status (ex: www.yoursite.com/payway_status)
     
 **7. How to access payment page :-**
 
