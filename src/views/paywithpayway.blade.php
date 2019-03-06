@@ -49,8 +49,8 @@
     <!--Checkout Container End -->
 
     <!-- Scripts for adding Payway Js and Css - Start-->
-    <link rel="stylesheet" href="{{$payment['url']}}/checkout-popup.html?file=css"/>
-    <script src="{{$payment['url']}}/checkout-popup.html?file=js"></script>
+    <link rel="stylesheet" href="{{config('payway.css_url')}}"/>
+    <script src="{{config('payway.js_url')}}"></script>
     <!-- Scripts for adding Payway Js and Css - End-->
     
     <!--Open Checkout popup on click of checkout button-->
