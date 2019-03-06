@@ -57,8 +57,6 @@ class PaywayController extends Controller {
     $payment['items_arr'] = $items;
     // hash (string) (required) – This will be auto-generated. (encrypt "merchant_id+tran_id+amount+items(optional) key" with hash_hmac sha512 after that convert the output using Base64. merchant_id and key - ABA Bank will be provided when client sign contract.)
     $payment['hashedTransactionId'] = $payway_helper->getHash($payment['transactionId'], $payment['amount'],$items);   
-    // it will get url for developement/production server based on api url specified in .env file for payway
-    $payment['url'] = $payway_helper->getUrl();
     // get the api URL specified in .env file 
     $payment['api_url'] = $payway_helper->getApiUrl();
     // get the merchant ID specified in .env file
