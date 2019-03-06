@@ -17,7 +17,7 @@ Create a Payway developer mode and create a sandbox account to get important cre
 
 **3. Provide following details into .env file:-** 
 
-After creating your payway account, you will get api_key, api_url , merchant_id and url for js & css Copy these credentials and paste them in your .env file.
+After creating your payway account, you will get api_key, api_url , merchant_id and url for js & css. Copy these credentials and paste them in your .env file.
 
 **PAYWAY_API_KEY=**
 
