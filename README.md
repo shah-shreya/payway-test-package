@@ -5,11 +5,11 @@ Laravel setup is required to use this plugin.
 
 **1.** For Laravel payway integration, first install the payway package in your application  using the composer command. Once package get installed, vendor publish command is required to make the package work. Open your command prompt and paste the following command under project directory.
    
-**Composer Command :-  composer require payway/payway** 
+**Composer Command :-**  
+**composer require payway/payway** 
 
-**Vendor publish command :- php artisan vendor:publish**
-
-After running vendor publish command you will find the list of providers, write the number of Payway service provider from the list and press Enter to finish vendor publish process.
+**Vendor publish command :-**
+**php artisan vendor:publish --provider="payway\payway\PaywayServiceProvider"**
 
 **2. Create Payway Account:-**
      
@@ -19,13 +19,17 @@ Create a Payway developer mode and create a sandbox account to get important cre
 
 **3. Provide following details into .env file:-** 
 
-After creating your payway account, you will get api_key and api_url and merchant_id. Copy these credentials and paste them in your .env file.
+After creating your payway account, you will get api_key, api_url , merchant_id and url for js & css Copy these credentials and paste them in your .env file.
 
 **PAYWAY_API_KEY=**
 
 **PAYWAY_API_URL=**
 
 **PAYWAY_MERCHANT_ID=**
+
+**PAYWAY_JS_URL=**
+
+**PAYWAY_CSS_URL=**
      
 **4. Payway Form View:-**
 
@@ -100,8 +104,8 @@ After creating your payway account, you will get api_key and api_url and merchan
     <!--Checkout Container End -->
 
     <!-- Scripts for adding Payway Js and Css - Start-->
-    <link rel="stylesheet" href="{{$payment['url']}}/checkout-popup.html?file=css"/>
-    <script src="{{$payment['url']}}/checkout-popup.html?file=js"></script>
+    <link rel="stylesheet" href="{{config('payway.css_url')}}"/>
+    <script src="{{config('payway.js_url')}}"></script>
     <!-- Scripts for adding Payway Js and Css - End-->
     
     <!--Open Checkout popup on click of checkout button-->
@@ -181,8 +185,6 @@ After creating your payway account, you will get api_key and api_url and merchan
          $payment['items_arr'] = $items;
          // hash (string) (required) – This will be auto-generated. (encrypt "merchant_id+tran_id+amount+items(optional) key" with hash_hmac sha512 after that convert the output using Base64. merchant_id and key - ABA Bank will be provided when client sign contract.)
          $payment['hashedTransactionId'] = $payway_helper->getHash($payment['transactionId'], $payment['amount'],$items);   
-         // it will get url for developement/production server based on api url specified in .env file for payway
-         $payment['url'] = $payway_helper->getUrl();
          // get the api URL specified in .env file 
          $payment['api_url'] = $payway_helper->getApiUrl();
          // get the merchant ID specified in .env file
