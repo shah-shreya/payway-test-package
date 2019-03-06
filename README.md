@@ -5,11 +5,9 @@ Laravel setup is required to use this plugin.
 
 **1.** For Laravel payway integration, first install the payway package in your application  using the composer command. Once package get installed, vendor publish command is required to make the package work. Open your command prompt and paste the following command under project directory.
    
-**Composer Command :-**  
-**composer require payway/payway** 
+**Composer Command :- composer require payway/payway** 
 
-**Vendor publish command :-**
-**php artisan vendor:publish --provider="payway\payway\PaywayServiceProvider"**
+**Vendor publish command :- php artisan vendor:publish --provider="payway\payway\PaywayServiceProvider"**
 
 **2. Create Payway Account:-**
      
