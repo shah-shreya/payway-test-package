@@ -21,10 +21,11 @@ class PaywayController extends Controller {
     $items = array();
     $items[0]['name'] = 'Item1';
     $items[0]['quantity'] = 2;
-    $items[0]['price'] = 10;
+    //$items[0]['price'] = sprintf("%f",10);
+    $items[0]['price'] = number_format((float)10, 2, '.', '');
     $items[1]['name'] = 'Item2';
     $items[1]['quantity'] = 4;
-    $items[1]['price'] = 5;  
+    $items[1]['price'] = number_format((float)5, 2, '.', '');  
     //Product/item array End
     //Logic to calculate amaount based on item price and quantity
     $total_amount = 0.00;
